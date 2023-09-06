@@ -3,8 +3,11 @@
 <head>
     <meta charset="utf-8">
     <title>HTML Practice</title>
+    <!-- 아이콘 적용 -->
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" 
     rel="stylesheet">
+    <!-- 같은 폴더 내부에 있는 css 파일 적용 -->
+    <link rel="stylesheet" href="week2_1.css" type="text/css"/> 
     
 </head>
 <body>
@@ -42,22 +45,23 @@
             <span class="material-icons">
             home
             </span>
-            Hi-Tech Center, Incheon <br>
-            
+            Hi-Tech Center, Incheon <br>    
         </ul>
     </section>
     <section class="sc2" id="s2">
         <h2 class="c2">Coursework</h2>
-        <ol>
-            1. Linear Algebra <br>
-            2. Data Structures <br>
-            3. Programming Practice <br>
-            4. Algorithm Design <br>
+        <!-- ol tag: ordered list (순서있는 리스트 ), start에서 시작 번호 지정가능 -->
+        <ol start="1">
+            <li> Linear Algebra </li>
+            <li> Data Structures </li>
+            <li> Programming Practice</li>
+            <li> Algorithm Design </li>
         </ol>
     </section>
     <section class="sc3" id="s3">
         <h2 class="c3">Courses</h2>
         <ul>
+            <!-- A tag: 하이퍼링크 적용 -->
             <li> <A href="http://google.com"> Database</A></li>
         </ul>
     </section>
@@ -71,94 +75,10 @@
         </p>
     </section>
     <footer>
-        &copy;Your name and email address
+        &copy;Jae-Young Lee <br>
+        boutljy@naver.com
     </footer>
 </body>
 </html>
 
 <!-- CSS를 HTML에 적용 -->
-<style> 
-    body {
-        margin: 0px;
-        padding: 0px;
-    }
-    
-    header {
-        width: 100%;
-        background-color: #005766;
-        height: 200px;
-    }
-    
-    header>div {
-        float: left;
-        
-    }
-    
-    header h1 {
-        text-align: left;
-        color: white;
-    }
-    header p {
-        color: white;
-        text-align: left;
-        margin: 30px;
-    }
-    
-    header img {
-        height: 150px;
-        padding: 20px;
-    }
-    
-    nav {
-        clear: both;
-        background-color: #3db7cc;
-        height: 35px;
-    }
-    
-    nav a {
-        width: 170px;
-        height: 35px;
-        padding: 5px;
-        display: inline-block;
-        text-decoration: none;
-        text-align: center;
-    }
-    
-    section {
-        margin: 10px;
-        padding: 10px;
-        width: 45%;
-        height: 200px;
-        float: left;
-        border: 1px solid #3db7cc;
-        box-sizing: border-box;
-    }
-    
-    section p,
-    section u1,
-    section o1 {
-        padding-left: 50px;
-    }
-    
-    h2 {
-        margin: 5px;
-        padding: 10px;
-        background-color: #005766;
-        color: rgb(255, 255, 255);
-    }
-    
-    section a {
-        width: 80%;
-        height: 15px;
-        padding: 5px;
-    }
-    
-    footer {
-        clear: both;
-        height: 50px;
-        background-color: #eaeaea;
-        color: #5d5d5d;
-        padding: 20px;
-        font-size: 12px;
-    }
-</style>
