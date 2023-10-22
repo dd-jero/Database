@@ -4,11 +4,13 @@ CREATE TABLE Building (
 
 CREATE TABLE Department (
   `Id` INT PRIMARY KEY,
-  `Name` VARCHAR(45),
+  `Name` VARCHAR(45) UNIQUE,
   `Email` VARCHAR(45),
   `Phone_Number` CHAR(13),
   `Building_Id` INT,
-  FOREIGN KEY (`Building_Id`) REFERENCES Building(`Id`) ON DELETE NO ACTION);
+  FOREIGN KEY (`Building_Id`) REFERENCES Building(`Id`) 
+  ON UPDATE NO ACTION 
+  ON DELETE NO ACTION );
   
 CREATE TABLE Student (
   `Id` INT PRIMARY KEY,
@@ -17,14 +19,18 @@ CREATE TABLE Student (
   `Phone_Number` CHAR(13),
   `Major` VARCHAR(45),
   `Department_Id` INT,
-  FOREIGN KEY (`Department_Id`) REFERENCES Department(`Id`) ON DELETE CASCADE); -- 1:N 관계, 식별
+  FOREIGN KEY (`Department_Id`) REFERENCES Department(`Id`) ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY (`Major`) REFERENCES Department(`Name`) ON UPDATE CASCADE ON DELETE CASCADE
+  ); -- 1:N 관계, 식별
 
 CREATE TABLE Room ( 
   `Id` INT PRIMARY KEY,
   `Name` VARCHAR(45),
   `Capacity` INT,
   `Building_Id` INT,
-  FOREIGN KEY(`Building_Id`) REFERENCES Building(`Id`) ON DELETE CASCADE); -- 1:N 관계, 식별
+  FOREIGN KEY(`Building_Id`) REFERENCES Building(`Id`) 
+  ON UPDATE CASCADE
+  ON DELETE CASCADE); -- 1:N 관계, 식별
   
 -- 새로 추가된 엔티티: 수업, 동아리, 구성원
 CREATE TABLE Class (
@@ -62,24 +68,6 @@ CREATE TABLE Employee (
 --   FOREIGN KEY (Building_Id) REFERENCES Building(Id) ON DELETE NO ACTION, -- 비식별 관계여서 삭제되어도 특별한 행동없음
 --   FOREIGN KEY (Department_Id) REFERENCES Department(Id) ON DELETE NO ACTION);
 
-CREATE TABLE Student_has_Class ( -- 비식별관계: 학생은 수업 없을 수도 있음. N:M
-  Student_Id INT,
-  Class_Id VARCHAR(45),
-  FOREIGN KEY (Student_Id) REFERENCES Student(`Id`) ON DELETE NO ACTION,
-  FOREIGN KEY (Class_Id) REFERENCES Class(`Id`) ON DELETE NO ACTION);
-
-CREATE TABLE Student_has_Club ( -- 비식별관계: 동아리 없는 학생도 있음. N:M
-  Student_Id INT,
-  Club_Id INT,
-  FOREIGN KEY (Student_Id) REFERENCES Student(`Id`) ON DELETE NO ACTION,
-  FOREIGN KEY (Club_Id) REFERENCES Club(`Id`) ON DELETE NO ACTION);
-
-CREATE TABLE Employee_has_Class ( -- 비식별관계: 직원 중에 교수가 아닌 사람도 있으므로 수업이 없는 직원도 있음. N:M
-  Employee_Id INT,
-  Class_Id VARCHAR(45),
-  FOREIGN KEY (Employee_Id) REFERENCES Employee(`Id`) ON DELETE NO ACTION,
-  FOREIGN KEY (Class_Id) REFERENCES Class(`Id`) ON DELETE NO ACTION);
-
 -- 건물
 INSERT INTO Building VALUES(100, "Hightech");
 INSERT INTO Building VALUES(200, "60-years");
@@ -92,7 +80,7 @@ INSERT INTO Department VALUES(1,"information and communication engineering", "IC
 INSERT INTO Department VALUES(2, "electronics engineering", "ELEC@inha.edu", "032-0002-0002", 300);
 INSERT INTO Department VALUES(3, "artificial intelligence engineering", "AI@inha.edu", "032-0003-0003", 200);
 INSERT INTO Department VALUES(4, "computer engineering", "COM@inha.edu", "032-0004-0004", 100);
-INSERT INTO Department VALUES(5, "mechanicial engineering", "MEC@inha.edu", "032-0005-0005", 500);
+INSERT INTO Department VALUES(5, "mechanical engineering", "MEC@inha.edu", "032-0005-0005", 500);
 
 -- 학생
 INSERT INTO Student VALUES(12181816, 'Jaeyoung', '12181816@inha.edu', '010-2022-6965', 'information and communication engineering',1);
@@ -129,6 +117,27 @@ INSERT INTO Employee VALUES(121422, "Sangjo Yoo", "Professor");
 INSERT INTO Employee VALUES(102234, "Richard", "Professor");
 INSERT INTO Employee VALUES(103323, "George", "Professor");
 INSERT INTO Employee VALUES(152234, "Jisoo Lee", "Researcher");
+
+CREATE TABLE Student_has_Class ( -- 비식별관계: 학생은 수업 없을 수도 있음. N:M
+  `Student_Id` INT,
+  `Class_Id` VARCHAR(45),
+  PRIMARY KEY (`Student_Id`, `Class_Id`),
+  FOREIGN KEY (`Student_Id`) REFERENCES Student(`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  FOREIGN KEY (`Class_Id`) REFERENCES Class(`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION);
+
+CREATE TABLE Student_has_Club ( -- 비식별관계: 동아리 없는 학생도 있음. N:M
+  `Student_Id` INT,
+  `Club_Id` INT,
+  PRIMARY KEY (`Student_Id`, `Club_Id`),
+  FOREIGN KEY (`Student_Id`) REFERENCES Student(`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  FOREIGN KEY (`Club_Id`) REFERENCES Club(`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION);
+
+CREATE TABLE Employee_has_Class ( -- 비식별관계: 직원 중에 교수가 아닌 사람도 있으므로 수업이 없는 직원도 있음. N:M
+  `Employee_Id` INT,
+  `Class_Id` VARCHAR(45),
+  PRIMARY KEY (`Employee_Id`, `Class_Id`),
+  FOREIGN KEY (`Employee_Id`) REFERENCES Employee(`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  FOREIGN KEY (`Class_Id`) REFERENCES Class(`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION);
 
 -- 건물과 학과 관계
 -- INSERT INTO Building_has_Department VALUES(100, 1);
