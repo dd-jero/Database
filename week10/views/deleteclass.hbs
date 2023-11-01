@@ -1,0 +1,29 @@
+<h1>{{ title }}</h1>
+
+<table>
+  {{!-- 해당 학생에 대한 수업의 정보를 가져온다 --}}
+  <tr>
+    <td>Id</td>
+    <td>Name</td>
+    <td>Professor</td>
+  </tr>
+  {{#each classId}}
+    <form method="post" action="/delete/class">
+      <tr>
+        <td>{{Id}}</td>
+        <td>{{Name}}</td>
+        <td>{{Professor}}</td>
+        <td>
+          <button 
+            style="margin-left: 10px;" 
+            name='delBtn' 
+            type="submit" 
+            value="{{Id}}"
+          >
+            delete
+          </button>
+        </td>
+      </tr>
+    </form>
+  {{/each}}
+</table>
