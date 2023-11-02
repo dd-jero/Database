@@ -2,17 +2,18 @@
 
 <table>
   <tr>
-    <td>Dname</td>
-    <td>Dnumber</td>
-    <td>Email</td>
+    <td>Id</td>
+    <td>Name</td>
     <td>Phone_Number</td>
+    <td>Major</td>
+
   </tr>
-  {{#each department}}
+  {{#each studentInformation}}
   <tr>
+    <td>{{Id}}</td>
     <td>{{Name}}</td>
-    <td>{{Dnumber}}</td>
-    <td>{{Email}}</td>
     <td>{{Phone_Number}}</td>
+    <td>{{Major}}</td>
   </tr>
   {{/each}}
 </table>

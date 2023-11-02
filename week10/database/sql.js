@@ -18,8 +18,8 @@ export const selectSql = {
         const [result] = await promisePool.query(sql);
         return result;
     },
-    getDepartment: async () => {
-        const sql = `select * from department`;
+    getStudent: async (Id) => {
+        const sql = `select * from student where student.Id = ${Id}`;
         const [result] = await promisePool.query(sql);
         return result;
     },

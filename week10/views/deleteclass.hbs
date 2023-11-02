@@ -1,13 +1,12 @@
 <h1>{{ title }}</h1>
 
 <table>
-  {{!-- 해당 학생에 대한 수업의 정보를 가져온다 --}}
   <tr>
     <td>Id</td>
     <td>Name</td>
     <td>Professor</td>
   </tr>
-  {{#each classId}}
+  {{#each classInformation}}
     <form method="post" action="/delete/class">
       <tr>
         <td>{{Id}}</td>

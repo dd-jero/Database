@@ -7,10 +7,11 @@ router.get('/', async (req, res) => {
     if (req.session.user == undefined) {
         res.redirect('/');
     } else if (req.session.user.role === 'student' || req.session.user.role === 'super') {
-        const department = await selectSql.getDepartment();
+        const studentId = req.session.user.id;
+        const studentInformation = await selectSql.getStudent(studentId);
         res.render('select', {
-            title: "IT Engineering",
-            department,
+            title: "My information",
+            studentInformation,
         });
     } else {
         res.redirect('/');
