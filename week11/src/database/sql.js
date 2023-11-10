@@ -26,7 +26,7 @@ export const selectSql = {
       const [result] = await promisePool.query(sql);
       return result;
   },
-  getClass: async (studentId) => { // 학생과 수업 관계 테이블에 join하여 class에 대한 정보를 가져온 뒤 입력 받은 학번과 동일한 학번에 대한 수업만 출력
+  getClass: async (studentId) => {
       const sql = `select c.Id, c.Name, c.Professor, c.Number_of_participants, d.Name AS dname from class as c 
       join student_has_class as shc on c.Id = shc.Class_Id
       JOIN Department as d on c.Department_Id = d.Id 
@@ -42,21 +42,23 @@ export const selectSql = {
   getCountParticipant: async (studentId) => {
     const sql = `SELECT c.Id, c.Name, c.Professor, c.Number_of_participants, d.Name AS dname, 
     COALESCE(COUNT(shc.Class_Id), 0) AS enrolledStudents 
-    FROM class as c 
-    LEFT JOIN student_has_class as shc ON c.Id = shc.Class_Id 
-    JOIN Department as d on c.Department_Id = d.Id
+    FROM class AS c 
+    LEFT JOIN student_has_class AS shc ON c.Id = shc.Class_Id 
+    JOIN Department AS d ON c.Department_Id = d.Id
     WHERE NOT EXISTS (
-      SELECT 1
-      FROM student_has_class as shc2
-      WHERE shc2.Student_Id = ${studentId} AND shc2.Class_Id = c.Id
+        SELECT 1
+        FROM student_has_class AS shc2
+        WHERE shc2.Student_Id = ${studentId} AND shc2.Class_Id = c.Id
       )
     GROUP BY c.Id`;
+
     const [result] = await promisePool.query(sql);
     const allClass = result.map(classInfo => ({
       ...classInfo,
       Opening_departments: classInfo.dname,
       Remaining_participants: classInfo.Number_of_participants - classInfo.enrolledStudents
     }));
+
     return allClass;
   }
 }

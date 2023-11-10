@@ -107,7 +107,7 @@ INSERT INTO Room VALUES(401, "N4323", 35, 400);
 INSERT INTO Room VALUES(501, "N5001", 50, 500);
 
 -- 수업
-INSERT INTO Class VALUES("ICE4016", "Database design", "Wonik Choi", 100, 1);
+INSERT INTO Class VALUES("ICE4016", "Database design", "Wonik Choi", 1, 1);
 INSERT INTO Class VALUES("ICE4017", "Internet Protocol", "Sangjo Yoo", 50, 1);
 INSERT INTO Class VALUES("ACE2102", "Engineering Mathematics 2", "Richard", 60, 5);
 INSERT INTO Class VALUES ("ACE1002", "Principles of Physics", "George", 50, 2);

@@ -62,6 +62,13 @@
 
     </div>
   </div>
+  <script>
+      // Check if the 'message' variable is defined
+      const message = "{{ message }}";
+      if (message) {
+          alert(message);
+      }
+  </script>
   <div class="main">
     <div class="main-top">
       <span class="main-top_title">Course registration for the 2nd semester of 2023</span>
@@ -116,6 +123,7 @@
             </tr>
           </form>
           {{/each}}
+          
         </table>
       </div>
     </div>
