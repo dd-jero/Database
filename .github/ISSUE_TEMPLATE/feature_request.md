@@ -1,20 +1,17 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
+name: Feature
+about: 기능 작업사항 입력
 title: ''
-labels: ''
+labels: ':white_check_mark:'
 assignees: ''
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+## Description
+설명을 작성하세요.
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+## To-do
+- [ ] todo
+- [ ] todo
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
-
-**Additional context**
-Add any other context or screenshots about the feature request here.
+## ETC
