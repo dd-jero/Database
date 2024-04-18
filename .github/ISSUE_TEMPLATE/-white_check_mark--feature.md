@@ -1,8 +1,8 @@
 ---
-name: Feature
+name: ":white_check_mark: Feature"
 about: 기능 작업사항 입력
 title: ''
-labels: ':white_check_mark:'
+labels: ''
 assignees: ''
 
 ---
