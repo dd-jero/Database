@@ -1,8 +1,8 @@
 ---
 name: Bug report
 about: 발생한 버그에 대한 내용
-title: ':bug:'
-labels: ''
+title: ":bug:"
+labels: bug
 assignees: ''
 
 ---
@@ -14,4 +14,4 @@ assignees: ''
 예상했던 정상적인 결과 
 
 ## :bulb:ETC
-추가적으로 작성할 내용 
+추가적으로 작성할 내용
