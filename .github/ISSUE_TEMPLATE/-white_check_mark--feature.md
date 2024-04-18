@@ -7,11 +7,11 @@ assignees: ''
 
 ---
 
-## Description
+## 🔥설명
 설명을 작성하세요.
 
-## To-do
-- [ ] todo
-- [ ] todo
+## :page_facing_up:작업 상세 내용 
+- [ ] 작업
+- [ ] 작업
 
-## ETC
+## :bulb:ETC
