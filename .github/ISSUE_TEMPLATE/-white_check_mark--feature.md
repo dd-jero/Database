@@ -1,7 +1,7 @@
 ---
 name: " Feature"
 about: 기능 작업사항 입력
-title: ':white_check_mark:'
+title: ":white_check_mark:"
 labels: enhancement
 assignees: ''
 
